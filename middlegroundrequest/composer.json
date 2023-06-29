@@ -1,0 +1,25 @@
+{
+	"name" : "lrh/middlegroundrequest",
+	"description" : "Laravel extensions technology middleground request skd, use for my object(ykos)",
+	"keywords" : [
+		"middleground",
+		"ykos"
+	],
+	"type" : "package",
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "liangrihui",
+			"email" : "1239181489@qq.com"
+		}
+	],
+	"require" : {
+		"guzzlehttp/guzzle": "^6.3",
+		"php" : ">=5.2.1"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Lrh\\MiddlegroundRequest\\" : "src"
+		}
+	},
+	"minimum-stability" : "dev"
+}
