@@ -14,10 +14,10 @@ class XLSXWriter
 
         $client = new Client();
         // post:form_params  get:query
-        $response = $client->get($option['url'].'/api/exportData', ['query' => $option]);
+        $response = $client->post($option['url'].'/api/exportData', ['form_params' => $option]);//参数太长了,改为Post请求，
+        // $response = $client->get($option['url'].'/api/exportData', ['query' => $option]);
         $reposInfo = json_decode($response->getBody(), true);
 
         return $reposInfo;
-        // return [];
     }
 }
