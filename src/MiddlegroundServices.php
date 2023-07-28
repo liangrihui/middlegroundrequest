@@ -41,16 +41,16 @@ class MiddlegroundServices
      * @return string 返回错误的日志
      */
     function setOption($option) {
-        $this->option = $option;
+        // $this->option = $option;
 
         if ($this->type == self::TYPE_XLS) {
-            if (!empty($option['url'])) {
+            if (empty($option['url'])) {
                 return '未指定技术中台的域名';
             }
-            if (!empty($option['name'])) {
+            if (empty($option['name'])) {
                 return '未指定表格名称';
             }
-            if (!empty($option['exportData'])) {
+            if (empty($option['exportData'])) {
                 return '未指定导出的内容';
             }
 
@@ -58,6 +58,7 @@ class MiddlegroundServices
             if ($count > 150000) {
                 return '目前限制只能导小于15W条数据';
             }
+            $option['exportData'] = json_encode($option['exportData'], true);
         }
 
         if ($this->type == self::TYPE_MSG) {
@@ -67,7 +68,7 @@ class MiddlegroundServices
         if ($this->type == self::TYPE_PAY) {
             
         }
-
+        $this->option = $option;
         return '';
     }
 
