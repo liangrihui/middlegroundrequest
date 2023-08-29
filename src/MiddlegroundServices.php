@@ -7,6 +7,7 @@ class MiddlegroundServices
     const TYPE_XLS = 'xls'; //表格功能
     const TYPE_PAY = 'pay'; //支付功能
     const TYPE_MSG = 'msg'; //短信功能
+    const TYPE_DB = 'quickDB'; //并发查询
 
     public $type = self::TYPE_XLS;
     public $mode;
@@ -30,6 +31,10 @@ class MiddlegroundServices
 
         if ($type == self::TYPE_PAY) {
             $this->mode = new PayServices();
+        }
+
+        if ($type == self::TYPE_DB) {
+            $this->mode = new QuickDBServices();
         }
     }
 
@@ -67,6 +72,11 @@ class MiddlegroundServices
 
         if ($this->type == self::TYPE_PAY) {
             
+        }
+        if ($this->type == self::TYPE_DB) {
+            if (empty($option['url'])) {
+                return '未指定技术中台的域名';
+            }
         }
         $this->option = $option;
         return '';
